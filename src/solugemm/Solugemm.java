@@ -13,12 +13,7 @@ import solugemmDao.ClienteDao;
 import solugemmDao.FuncionarioDao;
 import solugemmDao.MaterialDao;
 import solugemmDao.TipoDeServicoDao;
-import view.CadastroClientes;
-import view.CadastroFuncionarios;
-import view.CadastroMaterial;
-import view.CadastroServicos;
-import view.Login;
-import view.TelaOrdemServico;
+
 
 /**
  *
@@ -51,8 +46,7 @@ public class Solugemm {
         
        
        
-     Login login = new Login();
-     login.setVisible(true);   
+    
        
        
        
