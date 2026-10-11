@@ -9,10 +9,10 @@ import br.com.solugem.model.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import solugemmDao.ClienteDao;
-import solugemmDao.FuncionarioDao;
-import solugemmDao.MaterialDao;
-import solugemmDao.TipoDeServicoDao;
+import br.com.solugem.dao.ClienteDao;
+import br.com.solugem.dao.FuncionarioDao;
+import br.com.solugem.dao.MaterialDao;
+import br.com.solugem.dao.TipoDeServicoDao;
 
 
 /**
