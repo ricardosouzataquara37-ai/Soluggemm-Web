@@ -4,8 +4,8 @@
  */
 package br.com.solugem.dao;
 
+import br.com.solugem.conexao.conexao;
 import br.com.solugem.model.Cliente;
-import br.com.solugem.model.Conexao;
 import br.com.solugem.model.Endereco;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
@@ -29,7 +29,7 @@ public class ClienteDao {
     
     Connection conn = null;
     try {
-        conn = Conexao.getConnection();
+        conn = conexao.getConnection();
         conn.setAutoCommit(false); 
 
         PreparedStatement psCli = conn.prepareStatement(sqlCliente, Statement.RETURN_GENERATED_KEYS);
@@ -81,7 +81,7 @@ public class ClienteDao {
     List<Cliente> lista = new ArrayList<>();
 
     
-    try (Connection conn = Conexao.getConnection();
+    try (Connection conn = conexao.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql);
          ResultSet rs = ps.executeQuery()) {
 
@@ -131,7 +131,7 @@ public class ClienteDao {
                  "JOIN endereco end ON c.idCliente = end.idCliente " +
                  "WHERE c.identificacao = ?";
 
-    try (Connection conn = Conexao.getConnection();
+    try (Connection conn = conexao.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql)) {
 
       
@@ -188,7 +188,7 @@ public class ClienteDao {
     String sqlEndereco = "UPDATE endereco SET cep = ?, rua = ?,numero = ?,bairro = ?, cidade = ?,estado = ?,casa = ?,numeroApartamento = ?,bloco = ? WHERE idCliente = ?";
     Connection conn = null;
     try  {
-        conn = Conexao.getConnection();
+        conn = conexao.getConnection();
         conn.setAutoCommit(false); 
 
         try (PreparedStatement ps = conn.prepareStatement(sqlCliente)) {
@@ -233,7 +233,7 @@ public class ClienteDao {
     String sqlEndereco = "DELETE FROM endereco WHERE idCliente = ?";
     String sqlCliente = "DELETE FROM cliente WHERE idCliente = ?";
 
-    try (Connection conn = Conexao.getConnection()) {
+    try (Connection conn = conexao.getConnection()) {
         conn.setAutoCommit(false); 
 
        

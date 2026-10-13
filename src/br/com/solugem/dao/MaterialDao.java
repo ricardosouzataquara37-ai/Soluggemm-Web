@@ -4,7 +4,8 @@
  */
 package br.com.solugem.dao;
 
-import br.com.solugem.model.Conexao;
+import br.com.solugem.conexao.conexao;
+
 import br.com.solugem.model.Fabricante;
 import br.com.solugem.model.Material;
 //import com.sun.jdi.connect.spi.Connection;
@@ -35,7 +36,7 @@ public class MaterialDao {
     String sqlFabricante = "INSERT INTO fabricante (nome, cnpj) VALUES (?, ?)";
     String sqlMaterial = "INSERT INTO material (nome, preco, codigo, idFabricante) VALUES (?, ?, ?, ?)";
 
-    try (java.sql.Connection conn = Conexao.getConnection()) {
+    try (java.sql.Connection conn = conexao.getConnection()) {
         conn.setAutoCommit(false); // Inicia a transação
 
        
@@ -78,7 +79,7 @@ public List<Material> consultarTodos() {
 
     List<Material> lista = new ArrayList<>();
 
-    try (Connection conn = Conexao.getConnection();
+    try (Connection conn = conexao.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql);
          ResultSet rs = ps.executeQuery()) {
 
@@ -112,7 +113,7 @@ public List<Material> consultarTodos() {
                  "JOIN fabricante f ON m.idFabricante = f.idFabricante " +
                  "WHERE m.codigo = ?";
 
-    try (java.sql.Connection conn = Conexao.getConnection();
+    try (java.sql.Connection conn = conexao.getConnection();
          java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
 
         ps.setString(1, codigo);
@@ -146,7 +147,7 @@ public List<Material> consultarTodos() {
     String sqlMaterial = "UPDATE material SET nome = ?, preco = ?, codigo = ? WHERE idMaterial = ?";
     String sqlFabricante = "UPDATE fabricante SET nome = ?, cnpj = ? WHERE idFabricante = ?";
 
-    try (java.sql.Connection conn = Conexao.getConnection()) {
+    try (java.sql.Connection conn = conexao.getConnection()) {
         conn.setAutoCommit(false); 
 
        
@@ -176,7 +177,7 @@ public List<Material> consultarTodos() {
      public void remover(int idMaterial) {
     String sql = "DELETE FROM material WHERE idMaterial = ?";
 
-    try (java.sql.Connection conn = Conexao.getConnection();
+    try (java.sql.Connection conn = conexao.getConnection();
          java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
 
         ps.setInt(1, idMaterial);

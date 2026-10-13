@@ -4,7 +4,8 @@
  */
 package br.com.solugem.dao;
 
-import br.com.solugem.model.Conexao;
+import br.com.solugem.conexao.conexao;
+
 import br.com.solugem.model.FuncionarioServico;
 import br.com.solugem.model.MaterialUtilizado;
 import br.com.solugem.model.OrdemServico;
@@ -40,7 +41,7 @@ public class OrdemServicoDao {
          String sqlServ = "INSERT INTO servico_concluido (qtdTipoServico, preco, idOS, idTDS) VALUES ( ?, ?, ?, ?)";
          String sqlFunc = "INSERT INTO funcionario_servico (horaInicioServico, horaFimServico, observacaoDoFuncionario, idOS, idFuncionario) VALUES (?, ?, ?, ?, ?)";
 
-    try (Connection conn = Conexao.getConnection()) {
+    try (Connection conn = conexao.getConnection()) {
         conn.setAutoCommit(false); // Inicia a transação
 
         // 1. Salvar Endereço e pegar ID

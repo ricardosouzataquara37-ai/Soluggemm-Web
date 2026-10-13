@@ -4,8 +4,8 @@
  */
 package br.com.solugem.dao;
 
+import br.com.solugem.conexao.conexao;
 import br.com.solugem.model.Cargo;
-import br.com.solugem.model.Conexao;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class CargoDao {
         String sql = "SELECT idCargo, nomeCargo, salario FROM cargo";
         List<Cargo> lista = new ArrayList<>();
 
-        try (Connection conn = Conexao.getConnection();
+        try (Connection conn = conexao.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 

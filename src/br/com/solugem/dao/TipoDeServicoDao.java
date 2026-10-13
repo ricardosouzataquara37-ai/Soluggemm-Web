@@ -4,7 +4,7 @@
  */
 package br.com.solugem.dao;
 
-import br.com.solugem.model.Conexao;
+import br.com.solugem.conexao.conexao;
 import br.com.solugem.model.TipoDeServico;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public void salvar(TipoDeServico tipoServ) {
    
     String sql = "INSERT INTO tipo_de_servico (descricao, codigo, precoServico) VALUES (?, ?, ?)";
 
-    try (Connection conn = Conexao.getConnection();
+    try (Connection conn = conexao.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql)) {
 
         ps.setString(1, tipoServ.getDescricao());
@@ -44,7 +44,7 @@ public List<TipoDeServico> consultarTodos(String codigo) {
     String sql = "SELECT * FROM tipo_de_servico WHERE codigo = ?";
     List<TipoDeServico> lista = new ArrayList<>();
 
-    try (Connection conn = Conexao.getConnection();
+    try (Connection conn = conexao.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql)) {
 
         ps.setString(1, codigo);
@@ -73,7 +73,7 @@ public List<TipoDeServico> consultarTodos(String codigo) {
     String sql = "SELECT * FROM tipo_de_servico";
     List<TipoDeServico> lista = new ArrayList<>();
 
-    try (java.sql.Connection conn = Conexao.getConnection();
+    try (java.sql.Connection conn = conexao.getConnection();
          java.sql.PreparedStatement ps = conn.prepareStatement(sql);
          java.sql.ResultSet rs = ps.executeQuery()) {
 
@@ -96,7 +96,7 @@ public List<TipoDeServico> consultarTodos(String codigo) {
    public TipoDeServico consultar(String codigo) {
     String sql = "SELECT * FROM tipo_de_servico WHERE codigo = ?";
 
-    try (java.sql.Connection conn = Conexao.getConnection();
+    try (java.sql.Connection conn = conexao.getConnection();
          java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
 
         ps.setString(1, codigo);
@@ -123,7 +123,7 @@ public List<TipoDeServico> consultarTodos(String codigo) {
  public void atualizar(TipoDeServico tipoServico) {
     String sql = "UPDATE tipo_de_servico SET descricao = ?, codigo = ?, precoServico = ? WHERE idTDS = ?";
 
-    try (java.sql.Connection conn = Conexao.getConnection();
+    try (java.sql.Connection conn = conexao.getConnection();
          java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
 
         ps.setString(1, tipoServico.getDescricao());
@@ -148,7 +148,7 @@ public List<TipoDeServico> consultarTodos(String codigo) {
    public void remover(int idServico) {
     String sql = "DELETE FROM tipo_de_servico WHERE idTDS = ?";
 
-    try (java.sql.Connection conn = Conexao.getConnection();
+    try (java.sql.Connection conn = conexao.getConnection();
          java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
 
         ps.setInt(1, idServico);
@@ -166,9 +166,5 @@ public List<TipoDeServico> consultarTodos(String codigo) {
     }
 }
  
- 
-
-
-
 }
 

@@ -4,8 +4,8 @@
  */
 package br.com.solugem.dao;
 
+import br.com.solugem.conexao.conexao;
 import br.com.solugem.model.Cargo;
-import br.com.solugem.model.Conexao;
 import br.com.solugem.model.Empresa;
 import br.com.solugem.model.Endereco;
 import br.com.solugem.model.Funcionario;
@@ -34,7 +34,7 @@ public class FuncionarioDao {
     
     Connection conn = null;
     try {
-        conn = Conexao.getConnection();
+        conn = conexao.getConnection();
         conn.setAutoCommit(false); 
         
         int idCargo = funcionario.getCargo().getIdCardo();
@@ -96,7 +96,7 @@ public class FuncionarioDao {
     List<Funcionario> lista = new ArrayList<>();
 
     
-    try (Connection conn = Conexao.getConnection();
+    try (Connection conn = conexao.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql);
          ResultSet rs = ps.executeQuery()) {
 
@@ -159,7 +159,7 @@ public class FuncionarioDao {
                  "JOIN endereco end ON f.idFuncionario = end.idFuncionario " +
                  "WHERE f.matricula = ?";
 
-    try (Connection conn = Conexao.getConnection();
+    try (Connection conn = conexao.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql)) {
 
       
@@ -220,7 +220,7 @@ public class FuncionarioDao {
     
     String sql = "SELECT  * FROM funcionario f  WHERE f.matricula = ? AND f.senha = ?";
 
-    try (Connection conn = Conexao.getConnection();
+    try (Connection conn = conexao.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql)) {
 
         ps.setString(1, matricula);
@@ -252,7 +252,7 @@ public class FuncionarioDao {
     String sqlEndereco = "UPDATE endereco SET cep = ?, rua = ?,numero = ?,bairro = ?, cidade = ?,estado = ?,casa = ?,numeroApartamento = ?,bloco = ? WHERE idFuncionario = ?";
     Connection conn = null;
     try  {
-        conn = Conexao.getConnection();
+        conn = conexao.getConnection();
         conn.setAutoCommit(false); 
 
         try (PreparedStatement ps = conn.prepareStatement(sqlFuncionario)) {
@@ -300,7 +300,7 @@ public class FuncionarioDao {
     String sqlEndereco = "DELETE FROM endereco WHERE idFuncionario = ?";
     String sqlFuncionario = "DELETE FROM funcionario WHERE idFuncionario = ?";
 
-    try (Connection conn = Conexao.getConnection()) {
+    try (Connection conn = conexao.getConnection()) {
         conn.setAutoCommit(false); 
 
        
