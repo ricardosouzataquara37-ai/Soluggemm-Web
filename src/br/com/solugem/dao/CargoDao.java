@@ -22,10 +22,7 @@ import java.sql.SQLException;
  * @author principal
  */
 public class CargoDao {
-    
-    private static List<Cargo> listaCargo = new ArrayList<>();
-    // -----------------------------
-
+   
     public List<Cargo> listarTodos() {
         String sql = "SELECT idCargo, nomeCargo, salario FROM cargo";
         List<Cargo> lista = new ArrayList<>();
@@ -47,20 +44,25 @@ public class CargoDao {
         }
         return lista;
     }
+    
+    
+    public void salvar(Cargo cargo) {
+        String sql = "INSERT INTO cargo (nomeCargo, salario) VALUES (?, ?)";
+
+        try (Connection conn = conexao.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, cargo.getCargo());
+            ps.setDouble(2, cargo.getSalario());
+            
+            ps.executeUpdate();
+            
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao salvar cargo: " + e.getMessage());
+        }
+    }
  
     
-    //-------------------------------
-    
-    public List<Cargo> listarTodos2() {
-        return listaCargo;
-    }
-    
-    // método auxiliar
-    private static List<Cargo> listarCargoMain = new ArrayList<>();  
-     
-     public void salvar(Cargo cargo){
-         listarCargoMain.add(cargo);
-     }
     
     
 }
