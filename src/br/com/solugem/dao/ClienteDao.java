@@ -224,7 +224,7 @@ public class ClienteDao {
     } catch (SQLException e) {
         
         try { conn.rollback(); } catch (SQLException ex) { ex.printStackTrace(); }
-        throw new RuntimeException("Erro ao atualizar funcionário: " + e.getMessage());
+        throw new RuntimeException("Erro ao atualizar cliente: " + e.getMessage());
     }
 }
 
@@ -249,10 +249,10 @@ public class ClienteDao {
         }
 
         conn.commit(); 
-        System.out.println("Funcionário removido com sucesso!");
+        System.out.println("Cliente removido com sucesso!");
 
     } catch (SQLException e) {
-        throw new RuntimeException("Erro ao remover funcionário: " + e.getMessage());
+        throw new RuntimeException("Erro ao remover cliente: " + e.getMessage());
     }
 }   
 
