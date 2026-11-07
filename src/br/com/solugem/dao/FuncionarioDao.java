@@ -29,59 +29,55 @@ import java.util.stream.Collectors;
 public class FuncionarioDao {
    
     public void salvar(Funcionario funcionario) {
-    String sqlFuncionario = "INSERT INTO funcionario (nome,matricula,identificacao,telefone,dataNascimento,sexo,idade,email, idCargo, idEmpresa) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
-    String sqlEndereco = "INSERT INTO endereco (cep,rua,numero,bairro, cidade,estado,casa,numeroApartamento,bloco, idFuncionario) VALUES (?, ?, ?,?,?,?,?,?,?,?)";
-    
-    Connection conn = null;
-    try {
-        conn = conexao.getConnection();
-        conn.setAutoCommit(false); 
+        String sqlFuncionario = "INSERT INTO funcionario (nome, matricula, identificacao, telefone, dataNascimento, sexo, idade, email, idCargo, idEmpresa) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sqlEndereco = "INSERT INTO endereco (cep, rua, numero, bairro, cidade, estado, casa, numeroApartamento, bloco, idFuncionario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
-        int idCargo = funcionario.getCargo().getIdCardo();
-        int idEmpresa = funcionario.getEmpresa().getIdEmpresa();
+        try (Connection conn = conexao.getConnection()) {
+            conn.setAutoCommit(false); 
+            
+            int idCargo = funcionario.getCargo().getIdCardo();
+            int idEmpresa = funcionario.getEmpresa().getIdEmpresa();
 
-      
-        PreparedStatement psFunc = conn.prepareStatement(sqlFuncionario, Statement.RETURN_GENERATED_KEYS);
-        psFunc.setString(1, funcionario.getNome());
-        psFunc.setString(2, funcionario.getMatricula());
-        psFunc.setString(3, funcionario.getIdentificacao());
-        psFunc.setString(4, funcionario.getTel());
-        psFunc.setDate(5, java.sql.Date.valueOf(funcionario.getDataNascimento()));
-        psFunc.setString(6, funcionario.getSexo());
-        psFunc.setInt(7, funcionario.getIdade());
-        psFunc.setString(8, funcionario.getEmail());
+            int idFuncionario = 0;
+            try (PreparedStatement psFunc = conn.prepareStatement(sqlFuncionario, Statement.RETURN_GENERATED_KEYS)) {
+                psFunc.setString(1, funcionario.getNome());
+                psFunc.setString(2, funcionario.getMatricula());
+                psFunc.setString(3, funcionario.getIdentificacao());
+                psFunc.setString(4, funcionario.getTel());
+                psFunc.setDate(5, java.sql.Date.valueOf(funcionario.getDataNascimento()));
+                psFunc.setString(6, funcionario.getSexo());
+                psFunc.setInt(7, funcionario.getIdade());
+                psFunc.setString(8, funcionario.getEmail());
+                psFunc.setInt(9, idCargo);
+                psFunc.setInt(10, idEmpresa);
+                psFunc.executeUpdate();
 
-        psFunc.setInt(9, idCargo);
-        psFunc.setInt(10, idEmpresa);
-        psFunc.executeUpdate();
+                try (ResultSet rs = psFunc.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        idFuncionario = rs.getInt(1);
+                    }
+                }
+            }
 
-       
-        ResultSet rs = psFunc.getGeneratedKeys();
-        int idFuncionario = 0;
-        if (rs.next()) idFuncionario = rs.getInt(1);
+            try (PreparedStatement psEnd = conn.prepareStatement(sqlEndereco)) {
+                psEnd.setString(1, funcionario.getEndereco().getCep());
+                psEnd.setString(2, funcionario.getEndereco().getRua());
+                psEnd.setString(3, funcionario.getEndereco().getNumero());
+                psEnd.setString(4, funcionario.getEndereco().getBairro());
+                psEnd.setString(5, funcionario.getEndereco().getCidade());
+                psEnd.setString(6, funcionario.getEndereco().getEstado());
+                psEnd.setString(7, funcionario.getEndereco().getCasa());
+                psEnd.setString(8, funcionario.getEndereco().getNumeroApartamento());
+                psEnd.setString(9, funcionario.getEndereco().getBloco());
+                psEnd.setInt(10, idFuncionario);
+                psEnd.executeUpdate();
+            }
 
-       
-        PreparedStatement psEnd = conn.prepareStatement(sqlEndereco);
-        psEnd.setString(1, funcionario.getEndereco().getCep());
-        psEnd.setString(2, funcionario.getEndereco().getRua());
-        psEnd.setString(3, funcionario.getEndereco().getNumero());
-        psEnd.setString(4, funcionario.getEndereco().getBairro());
-        psEnd.setString(5, funcionario.getEndereco().getCidade());
-        psEnd.setString(6, funcionario.getEndereco().getEstado());
-        psEnd.setString(7, funcionario.getEndereco().getCasa());
-        psEnd.setString(8, funcionario.getEndereco().getNumeroApartamento());
-        psEnd.setString(9, funcionario.getEndereco().getBloco());
-        psEnd.setInt(10, idFuncionario);
-        psEnd.executeUpdate();
-
-        conn.commit(); 
-    } catch (SQLException e) {
-        if (conn != null) try { conn.rollback(); } catch (SQLException ex) { ex.printStackTrace(); }
-        throw new RuntimeException("Erro ao salvar funcionário: " + e.getMessage());
-    } finally {
-        
+            conn.commit(); 
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao salvar funcionário: " + e.getMessage());
+        }
     }
-}
     
     
     
