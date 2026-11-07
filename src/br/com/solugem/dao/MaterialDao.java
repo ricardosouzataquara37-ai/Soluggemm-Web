@@ -33,43 +33,57 @@ public class MaterialDao {
     private static List <Material> listaMaterial = new ArrayList<>();
     
     public void salvarMaterialComFabricante(Material material) {
-    String sqlFabricante = "INSERT INTO fabricante (nome, cnpj) VALUES (?, ?)";
-    String sqlMaterial = "INSERT INTO material (nome, preco, codigo, idFabricante) VALUES (?, ?, ?, ?)";
+        String sqlFabricante = "INSERT INTO fabricante (nome, cnpj) VALUES (?, ?)";
+        String sqlMaterial = "INSERT INTO material (nome, preco, codigo, idFabricante) VALUES (?, ?, ?, ?)";
 
-    try (java.sql.Connection conn = conexao.getConnection()) {
-        conn.setAutoCommit(false); // Inicia a transação
+        Connection conn = null;
+        try {
+            conn = conexao.getConnection();
+            conn.setAutoCommit(false); // Inicia a transação
 
-       
-        int idFabricanteGerado = 0;
-        try (java.sql.PreparedStatement psFab = conn.prepareStatement(sqlFabricante, java.sql.Statement.RETURN_GENERATED_KEYS)) {
-            psFab.setString(1, material.getFabricante().getNome());
-            psFab.setString(2, material.getFabricante().getCnpj());
-            psFab.executeUpdate();
+            int idFabricanteGerado = 0;
+            try (PreparedStatement psFab = conn.prepareStatement(sqlFabricante, java.sql.Statement.RETURN_GENERATED_KEYS)) {
+                psFab.setString(1, material.getFabricante().getNome());
+                psFab.setString(2, material.getFabricante().getCnpj());
+                psFab.executeUpdate();
 
-            try (java.sql.ResultSet rs = psFab.getGeneratedKeys()) {
-                if (rs.next()) {
-                    idFabricanteGerado = rs.getInt(1);
+                try (ResultSet rs = psFab.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        idFabricanteGerado = rs.getInt(1);
+                    }
+                }
+            }
+
+            try (PreparedStatement psMat = conn.prepareStatement(sqlMaterial)) {
+                psMat.setString(1, material.getNome());
+                psMat.setDouble(2, material.getPreco());
+                psMat.setString(3, material.getCodigo());
+                psMat.setInt(4, idFabricanteGerado);
+                psMat.executeUpdate();
+            }
+
+            conn.commit(); 
+            System.out.println("Material e Fabricante salvos com sucesso!");
+
+        } catch (SQLException e) {
+            if (conn != null) {
+                try {
+                    conn.rollback(); // Desfaz as alterações em caso de erro
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            throw new RuntimeException("Erro ao salvar: " + e.getMessage());
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
             }
         }
-
-        
-        try (java.sql.PreparedStatement psMat = conn.prepareStatement(sqlMaterial)) {
-            psMat.setString(1, material.getNome());
-            psMat.setDouble(2, material.getPreco());
-            psMat.setString(3, material.getCodigo());
-            psMat.setInt(4, idFabricanteGerado);
-            psMat.executeUpdate();
-        }
-
-        conn.commit(); 
-        System.out.println("Material e Fabricante salvos com sucesso!");
-
-    } catch (java.sql.SQLException e) {
-        
-        throw new RuntimeException("Erro ao salvar: " + e.getMessage());
     }
-}
    
 public List<Material> consultarTodos() {
     // Usamos um JOIN para unir as tabelas material e fabricante
