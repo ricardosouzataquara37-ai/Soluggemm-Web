@@ -30,8 +30,6 @@ import java.sql.ResultSet;
  */
 public class MaterialDao {
     
-    private static List <Material> listaMaterial = new ArrayList<>();
-    
     public void salvarMaterialComFabricante(Material material) {
         String sqlFabricante = "INSERT INTO fabricante (nome, cnpj) VALUES (?, ?)";
         String sqlMaterial = "INSERT INTO material (nome, preco, codigo, idFabricante) VALUES (?, ?, ?, ?)";
