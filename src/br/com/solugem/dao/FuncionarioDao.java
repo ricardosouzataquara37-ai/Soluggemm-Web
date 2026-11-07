@@ -197,7 +197,7 @@ public class FuncionarioDao {
             endereco.setEstado(rs.getString("estado"));
             endereco.setCasa(rs.getString("casa"));
             endereco.setNumeroApartamento(rs.getString("numeroApartamento"));
-            endereco.setBloco(rs.getString("casa"));
+            endereco.setBloco(rs.getString("bloco")); // Corrigido de "casa" para "bloco"
             
             f.setEmpresa(empresa);
             f.setCargo(cargo);
