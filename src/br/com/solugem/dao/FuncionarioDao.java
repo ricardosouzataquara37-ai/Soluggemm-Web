@@ -293,31 +293,46 @@ public class FuncionarioDao {
 
     
  public void remover(int idFuncionario) {
-    String sqlEndereco = "DELETE FROM endereco WHERE idFuncionario = ?";
-    String sqlFuncionario = "DELETE FROM funcionario WHERE idFuncionario = ?";
+        String sqlEndereco = "DELETE FROM endereco WHERE idFuncionario = ?";
+        String sqlFuncionario = "DELETE FROM funcionario WHERE idFuncionario = ?";
 
-    try (Connection conn = conexao.getConnection()) {
-        conn.setAutoCommit(false); 
+        Connection conn = null;
+        try {
+            conn = conexao.getConnection();
+            conn.setAutoCommit(false); 
 
-       
-        try (PreparedStatement psEnd = conn.prepareStatement(sqlEndereco)) {
-            psEnd.setInt(1, idFuncionario);
-            psEnd.executeUpdate();
+            try (PreparedStatement psEnd = conn.prepareStatement(sqlEndereco)) {
+                psEnd.setInt(1, idFuncionario);
+                psEnd.executeUpdate();
+            }
+
+            try (PreparedStatement psFunc = conn.prepareStatement(sqlFuncionario)) {
+                psFunc.setInt(1, idFuncionario);
+                psFunc.executeUpdate();
+            }
+
+            conn.commit(); 
+            System.out.println("Funcionário removido com sucesso!");
+
+        } catch (SQLException e) {
+            if (conn != null) {
+                try {
+                    conn.rollback(); 
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            throw new RuntimeException("Erro ao remover funcionário: " + e.getMessage());
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-
-       
-        try (PreparedStatement psFunc = conn.prepareStatement(sqlFuncionario)) {
-            psFunc.setInt(1, idFuncionario);
-            psFunc.executeUpdate();
-        }
-
-        conn.commit(); 
-        System.out.println("Funcionário removido com sucesso!");
-
-    } catch (SQLException e) {
-        throw new RuntimeException("Erro ao remover funcionário: " + e.getMessage());
     }
-}   
 
  
     
