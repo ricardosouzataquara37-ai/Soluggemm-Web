@@ -25,12 +25,12 @@ public class Empresa {
     }
     
     
-    public Empresa(int id,String cnpj, String razaoSocial, String email, String telefome ){
-         this.cnpj = cnpj;
-         this.razaoSocial = razaoSocial;
-         this.email = email;
-         this.idEmpresa = id;
-         this.telefone = telefone;
+   public Empresa(int id, String cnpj, String razaoSocial, String email, String telefone) {
+        this.idEmpresa = id;
+        this.cnpj = cnpj;
+        this.razaoSocial = razaoSocial;
+        this.email = email;
+        this.telefone = telefone; // Corrigido
     }
     
     @Override
