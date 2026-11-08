@@ -4,6 +4,7 @@
  */
 package br.com.solugem.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,8 +18,15 @@ public class Empresa {
     private String email;
     private Endereco endereco;
     private List<Funcionario> funcionarios;
-    private List<Telefone> telefones;
+    private List<Telefone> telefones = new ArrayList<>(); // Inicializada para evitar null
     private String telefone;
+    
+    public void adicionarTelefone(Telefone t) {
+        if (this.telefones == null) {
+            this.telefones = new ArrayList<>();
+        }
+        this.telefones.add(t);
+    }
     
     public Empresa(){
         
