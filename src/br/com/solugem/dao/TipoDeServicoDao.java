@@ -18,9 +18,7 @@ import java.sql.ResultSet;
 
 
 public class TipoDeServicoDao {
-    private static List<TipoDeServico> tds = new ArrayList<>();
- 
-
+    
 public void salvar(TipoDeServico tipoServ) {
    
     String sql = "INSERT INTO tipo_de_servico (descricao, codigo, precoServico) VALUES (?, ?, ?)";
@@ -146,25 +144,25 @@ public List<TipoDeServico> consultarTodos(String codigo) {
 }
  
    public void remover(int idServico) {
-    String sql = "DELETE FROM tipo_de_servico WHERE idTDS = ?";
+        String sql = "DELETE FROM tipo_de_servico WHERE idTDS = ?";
 
-    try (java.sql.Connection conn = conexao.getConnection();
-         java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = conexao.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
 
-        ps.setInt(1, idServico);
-        
-        int linhasAfetadas = ps.executeUpdate();
-        
-        if (linhasAfetadas > 0) {
-            System.out.println("Material removido com sucesso!");
-        } else {
-            System.out.println("Nenhum material encontrado com este ID.");
+            ps.setInt(1, idServico);
+            
+            int linhasAfetadas = ps.executeUpdate();
+            
+            if (linhasAfetadas > 0) {
+                System.out.println("Tipo de serviço removido com sucesso!"); // Corrigido
+            } else {
+                System.out.println("Nenhum tipo de serviço encontrado com este ID."); // Corrigido
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao remover tipo de serviço: " + e.getMessage());
         }
-
-    } catch (java.sql.SQLException e) {
-        throw new RuntimeException("Erro ao remover material: " + e.getMessage());
     }
-}
  
 }
 
