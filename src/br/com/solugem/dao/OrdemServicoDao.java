@@ -26,14 +26,6 @@ import java.sql.ResultSet;
  */
 public class OrdemServicoDao {
     
-     private static List<OrdemServico> listaOs = new ArrayList<>();  
-   /**  
-     public void salvar(OrdemServico os){
-         listaOs.add(os);
-     } */
-     // -----------------------------------------------------------
-     
-     
     public boolean salvarOs(OrdemServico os) {
          String sqlEndereco = "INSERT INTO endereco (cep,rua,numero,bairro,cidade,Estado,casa,numeroApartamento,bloco) VALUES (?,?,?,?,?,?,?,?,?)";
          String sqlOS = "INSERT INTO ordem_servicos_agendado(data,idEmpresa,idEndereco,idCliente) VALUES (?,?,?,?)";

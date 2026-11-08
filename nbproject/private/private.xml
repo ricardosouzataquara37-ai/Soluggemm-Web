@@ -18,6 +18,19 @@
             <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/model/Empresa.java</file>
             <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/model/Cliente.java</file>
             <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/dao/EmpresaDao.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/dao/FuncionarioServicoDao.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/dao/MaterialUtilizadoDao.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/dao/ServicoConcluidoDao.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/model/AcumuloServico.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/model/Endereco.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/model/Funcionario.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/model/FuncionarioServico.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/model/Material.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/model/MaterialUtilizado.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/model/OrdemServico.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/model/ServicoConcluido.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/model/Telefone.java</file>
+            <file>file:/C:/Users/principal/OneDrive/Desktop/TDS-Tudo-Revisado/Todas%20as%20UCs/Enviar%20atividades%20UCs/UC15-Projetos%20%20Java%201%20e%202/2/UC15_Módulo_B/Solugemm_Web/src/br/com/solugem/model/TipoDeServico.java</file>
         </group>
     </open-files>
 </project-private>
