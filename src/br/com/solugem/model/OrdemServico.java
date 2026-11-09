@@ -21,9 +21,9 @@ public class OrdemServico {
     private Cliente cliente;
     private Empresa empresa;
     private Endereco endereco;
-    private static List<MaterialUtilizado> listaMatUtilizado = new ArrayList<>();
-    private static List<ServicoConcluido> listaServConcluido = new ArrayList<>();
-     
+    private List<MaterialUtilizado> listaMatUtilizado = new ArrayList<>();
+    private List<ServicoConcluido> listaServConcluido = new ArrayList<>();
+    private List<FuncionarioServico> listaFuncionarioServico = new ArrayList<>(); 
     
     // MaterialUtilizado
     
@@ -77,9 +77,7 @@ public class OrdemServico {
     
   // ----------------------- 
   //funcionarioServico
-     
-    private static List<FuncionarioServico> listaFuncionarioServico = new ArrayList<>();
-     
+   
      public void salvarFuncServ(FuncionarioServico funcServ){
          listaFuncionarioServico.add(funcServ);
      }
