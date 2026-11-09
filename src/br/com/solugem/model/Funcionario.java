@@ -33,7 +33,7 @@ public class Funcionario {
     private Empresa empresa;
     private Cargo cargo;
     private Endereco endereco;
-    private List<Telefone> telefones;
+    private List<Telefone> telefones = new ArrayList<>();
    
 
     public String getSenha() {
@@ -137,10 +137,12 @@ public class Funcionario {
         this.telefones = telefones;
     }
     
-    public void adicionarTelefone(Telefone t){
+    public void adicionarTelefone(Telefone t) {
+        if (this.telefones == null) {
+            this.telefones = new ArrayList<>();
+        }
         this.telefones.add(t);
     }
-    
    
     
     
