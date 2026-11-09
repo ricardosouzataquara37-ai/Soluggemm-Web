@@ -99,12 +99,7 @@ public class OrdemServico {
         }
      }  
      
-  //------------------------   
- /**   
-    public void adicionarEquipe(FuncionarioServico equipe){
-        this.equipe.add(equipe);
-    }
-  */
+  
     public int getIdOs() {
         return idOs;
     }
@@ -168,46 +163,5 @@ public class OrdemServico {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-/**
-    public List<FuncionarioServico> getEquipe() {
-        return equipe;
-    }
-
-    public void setEquipe(List<FuncionarioServico> equipe) {
-        this.equipe = equipe;
-    }
-
-    public List<MaterialUtilizado> getListaMateriais() {
-        return listaMateriais;
-    }
-
-    public void setListaMateriais(List<MaterialUtilizado> listaMateriais) {
-        this.listaMateriais = listaMateriais;
-    }
-
-    public List<ServicoConcluido> getListaServicos() {
-        return listaServicos;
-    }
-
-    public void setListaServicos(List<ServicoConcluido> listaServicos) {
-        this.listaServicos = listaServicos;
-    }
-  */  
-    
-   /** 
-    // ArrayList para testes simular banco de dados
-    public double calcularTotalOs(){
-        double soma = 0;
-        for(MaterialUtilizado m :listaMateriais){
-            soma +=m.getPrecoMaterial();
-        }
-        for(ServicoConcluido sc:listaServicos){
-            soma +=sc.getPreco();
-        }
-        return soma;
-    }
-    
-  */  
-    
-    
+ 
 }
