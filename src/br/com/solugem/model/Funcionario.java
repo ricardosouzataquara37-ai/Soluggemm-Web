@@ -34,28 +34,7 @@ public class Funcionario {
     private Cargo cargo;
     private Endereco endereco;
     private List<Telefone> telefones;
-    private Telefone telefome;
-    private String tel;
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-    
-    
-
-    public Telefone getTelefome() {
-        return telefome;
-    }
-
-    public void setTelefome(Telefone telefome) {
-        this.telefome = telefome;
-    }
-    
-    
+   
 
     public String getSenha() {
         return senha;
