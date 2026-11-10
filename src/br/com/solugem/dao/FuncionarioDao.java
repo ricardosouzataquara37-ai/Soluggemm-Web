@@ -43,7 +43,7 @@ public class FuncionarioDao {
                 psFunc.setString(1, funcionario.getNome());
                 psFunc.setString(2, funcionario.getMatricula());
                 psFunc.setString(3, funcionario.getIdentificacao());
-                psFunc.setString(4, funcionario.getTel());
+                psFunc.setString(4, funcionario.getTelefone());
                 psFunc.setDate(5, java.sql.Date.valueOf(funcionario.getDataNascimento()));
                 psFunc.setString(6, funcionario.getSexo());
                 psFunc.setInt(7, funcionario.getIdade());
@@ -170,7 +170,7 @@ public class FuncionarioDao {
             f.setNome(rs.getString("nome"));
             f.setMatricula(rs.getString("matricula"));
             f.setIdentificacao(rs.getString("identificacao"));
-            f.setTel(rs.getString("telefone"));
+            f.setTelefone(rs.getString("telefone"));
             java.sql.Date dataSql = rs.getDate("dataNascimento");
             if (dataSql != null) {
                
@@ -255,7 +255,7 @@ public class FuncionarioDao {
             ps.setString(1, funcionario.getNome());
             ps.setString(2, funcionario.getMatricula());
             ps.setString(3, funcionario.getIdentificacao());
-            ps.setString(4, funcionario.getTel());
+            ps.setString(4, funcionario.getTelefone());
             ps.setDate(5, java.sql.Date.valueOf(funcionario.getDataNascimento()));
             ps.setString(6, funcionario.getSexo());
             ps.setInt(7, funcionario.getIdade());

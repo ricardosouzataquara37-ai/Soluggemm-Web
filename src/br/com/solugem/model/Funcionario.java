@@ -18,6 +18,7 @@ public class Funcionario {
     private String matricula;
     private String identificacao;
     private LocalDate dataNascimento;
+    private String telefone; // Atributo reintegrao para o banco relacional atual
 
     public LocalDate getDataNascimento() {
         return dataNascimento;
@@ -35,6 +36,13 @@ public class Funcionario {
     private Endereco endereco;
     private List<Telefone> telefones = new ArrayList<>();
    
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 
     public String getSenha() {
         return senha;
