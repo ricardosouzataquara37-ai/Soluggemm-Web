@@ -34,7 +34,7 @@ public class ClienteDao {
             try (PreparedStatement psCli = conn.prepareStatement(sqlCliente, Statement.RETURN_GENERATED_KEYS)) {
                 psCli.setString(1, cliente.getNome());
                 psCli.setString(2, cliente.getCPF());
-                psCli.setString(3, cliente.getTel());
+                psCli.setString(3, cliente.getTelefone());
                 psCli.setDate(4, java.sql.Date.valueOf(cliente.getDataNascimento()));
                 psCli.setInt(5, cliente.getIdade());
                 psCli.setString(6, cliente.getSexo());
@@ -83,7 +83,7 @@ public class ClienteDao {
                 c.setIdCliente(rs.getInt("idCliente"));
                 c.setNome(rs.getString("nome"));
                 c.setCPF(rs.getString("identificacao"));
-                c.setTel(rs.getString("telefone"));
+                c.setTelefone(rs.getString("telefone"));
                 
                 java.sql.Date dataSql = rs.getDate("dataNascimento");
                 if (dataSql != null) {
@@ -131,7 +131,7 @@ public class ClienteDao {
                     c.setIdCliente(rs.getInt("idCliente"));
                     c.setNome(rs.getString("nome"));
                     c.setCPF(rs.getString("identificacao"));
-                    c.setTel(rs.getString("telefone"));
+                    c.setTelefone(rs.getString("telefone"));
                     
                     java.sql.Date dataSql = rs.getDate("dataNascimento");
                     if (dataSql != null) {
@@ -173,7 +173,7 @@ public class ClienteDao {
             try (PreparedStatement ps = conn.prepareStatement(sqlCliente)) {
                 ps.setString(1, cliente.getNome());
                 ps.setString(2, cliente.getCPF());
-                ps.setString(3, cliente.getTel());
+                ps.setString(3, cliente.getTelefone());
                 ps.setDate(4, java.sql.Date.valueOf(cliente.getDataNascimento()));
                 ps.setInt(5, cliente.getIdade());
                 ps.setString(6, cliente.getSexo());

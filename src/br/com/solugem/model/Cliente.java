@@ -1,10 +1,11 @@
-/*
+  /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package br.com.solugem.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,29 +21,13 @@ public class Cliente {
     private String sexo;
     private String email;
     private Endereco endereco;
-    private List<Telefone>telefones;
-    private Telefone telefone;
-    private String tel;
+    private String telefone; // Atributo unificado para a coluna do banco de dados relacional
+    private List<Telefone> telefones = new ArrayList<>(); // Lista para escalabilidade futura
 
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
+   
     private AcumuloServico saldoFidelidade;
 
-    public Telefone getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(Telefone telefone) {
-        this.telefone = telefone;
-    }
-
-    
-    
+   
  /**   
     // verificar identificação
     public boolean validarDocumento(){
@@ -136,7 +121,7 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public List<Telefone> getTelefones() {
+   public List<Telefone> getTelefones() {
         return telefones;
     }
 
@@ -144,8 +129,20 @@ public class Cliente {
         this.telefones = telefones;
     }
     
-    public void adicionarTelefone(Telefone t){
+    public void adicionarTelefone(Telefone t) {
+        if (this.telefones == null) {
+            this.telefones = new ArrayList<>();
+        }
         this.telefones.add(t);
+    }
+
+    // Método corrigido para atribuir a String do telefone atual (compatível com o banco)
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getTelefone() {
+        return telefone;
     }
     
     
