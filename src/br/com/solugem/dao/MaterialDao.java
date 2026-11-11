@@ -66,7 +66,7 @@ public class MaterialDao {
         } catch (SQLException e) {
             if (conn != null) {
                 try {
-                    conn.rollback(); // Desfaz as alterações em caso de erro
+                    conn.rollback(); 
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -84,7 +84,7 @@ public class MaterialDao {
     }
    
 public List<Material> consultarTodos() {
-    // Usamos um JOIN para unir as tabelas material e fabricante
+   
     String sql = "SELECT m.idMaterial, m.nome, m.preco, m.codigo, f.idFabricante AS id_fabricante, f.nome AS nome_fabricante, f.cnpj " +
                  "FROM material m " +
                  "JOIN fabricante f ON m.idFabricante = f.idFabricante";
@@ -107,7 +107,7 @@ public List<Material> consultarTodos() {
             m.setNome(rs.getString("nome"));
             m.setPreco(rs.getDouble("preco"));
             m.setCodigo(rs.getString("codigo"));
-            m.setFabricante(fab); // Associando o objeto criado acima
+            m.setFabricante(fab); 
 
             lista.add(m);
         }
@@ -152,7 +152,7 @@ public List<Material> consultarTodos() {
         throw new RuntimeException("Erro ao buscar material pelo código: " + e.getMessage());
     }
 
-    return null; // Retorna null se não encontrar nenhum material com esse código
+    return null; 
 }
  //qqq   
  public void atualizar(Material material) {

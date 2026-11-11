@@ -154,9 +154,9 @@ public List<TipoDeServico> consultarTodos(String codigo) {
             int linhasAfetadas = ps.executeUpdate();
             
             if (linhasAfetadas > 0) {
-                System.out.println("Tipo de serviço removido com sucesso!"); // Corrigido
+                System.out.println("Tipo de serviço removido com sucesso!"); 
             } else {
-                System.out.println("Nenhum tipo de serviço encontrado com este ID."); // Corrigido
+                System.out.println("Nenhum tipo de serviço encontrado com este ID."); 
             }
 
         } catch (SQLException e) {

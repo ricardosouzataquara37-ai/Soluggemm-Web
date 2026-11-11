@@ -23,12 +23,12 @@ public class EmpresaDao {
         listaEmpresa.add(new Empresa(5, "53019145000109", "Solugemm Serviços técnicos(Piedade)", "solugemm@solugemm.com", "21998556556"));
     }
     
-    // Retorna a lista de empresas em memória
+    // Retornar a lista de empresas em memória
     public List<Empresa> listarTodos() {
         return listaEmpresa;
     }
      
-    // Adiciona uma nova empresa temporariamente na lista em memória
+    // Adicionar uma nova empresa temporariamente na lista em memória
     public void salvar(Empresa empresa) {
         listaEmpresa.add(empresa);
     }

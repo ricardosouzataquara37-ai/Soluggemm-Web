@@ -105,7 +105,7 @@ public class FuncionarioDao {
             f.setIdentificacao(rs.getString("identificacao"));
             java.sql.Date dataSql = rs.getDate("dataNascimento");
             if (dataSql != null) {
-                // A conversão acontece aqui:
+              
                 LocalDate dataNascimento = dataSql.toLocalDate();
                 f.setDataNascimento(dataNascimento);
             }
@@ -197,7 +197,7 @@ public class FuncionarioDao {
             endereco.setEstado(rs.getString("estado"));
             endereco.setCasa(rs.getString("casa"));
             endereco.setNumeroApartamento(rs.getString("numeroApartamento"));
-            endereco.setBloco(rs.getString("bloco")); // Corrigido de "casa" para "bloco"
+            endereco.setBloco(rs.getString("bloco")); 
             
             f.setEmpresa(empresa);
             f.setCargo(cargo);
@@ -333,6 +333,9 @@ public class FuncionarioDao {
             }
         }
     }
+ 
+ 
+ 
 
  
     

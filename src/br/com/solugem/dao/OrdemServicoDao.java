@@ -36,7 +36,7 @@ public class OrdemServicoDao {
          Connection conn = null;
          try {
              conn = conexao.getConnection();
-             conn.setAutoCommit(false); // Inicia a transação
+             conn.setAutoCommit(false); 
 
              // 1. Salvar Endereço e pegar ID
              int idEnderecoGerado = 0;
@@ -106,13 +106,13 @@ public class OrdemServicoDao {
                  psFunc.executeBatch();
              }
 
-              conn.commit(); // Salva tudo no banco
+              conn.commit(); // Salvar tudo no banco
               return true;
 
          } catch (SQLException e) {
              if (conn != null) {
                  try {
-                     conn.rollback(); // Desfaz alterações em caso de erro
+                     conn.rollback(); // Desfazer alterações em caso de erro
                  } catch (SQLException ex) {
                      ex.printStackTrace();
                  }
