@@ -229,7 +229,7 @@ public class Solugemm {
             Material novoMaterial = new Material();
             novoMaterial.setNome("Furadeira Impacto 600W 22");
             novoMaterial.setPreco(350.00);
-            novoMaterial.setCodigo("7278");
+            novoMaterial.setCodigo("7223");
             novoMaterial.setFabricante(fabricante);
 
             materialDao.salvarMaterialComFabricante(novoMaterial);
@@ -301,7 +301,7 @@ public class Solugemm {
         try {
             TipoDeServico novoServico = new TipoDeServico();
             novoServico.setDescricao("Instalação de Aquecedor a Gás aa");
-            novoServico.setCodigo("1178");
+            novoServico.setCodigo("1132");
             novoServico.setPrecoServico(250.00);
 
             servicoDao.salvar(novoServico);

@@ -9,7 +9,7 @@ import br.com.solugem.model.TipoDeServico;
 import java.util.List;
 
 public class TipoDeServicoService {
-
+    
     private final TipoDeServicoDao tipoDeServicoDao = new TipoDeServicoDao();
 
     public void salvar(TipoDeServico tipoServico) {

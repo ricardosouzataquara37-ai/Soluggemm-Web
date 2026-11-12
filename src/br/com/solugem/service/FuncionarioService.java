@@ -9,7 +9,7 @@ import br.com.solugem.model.Funcionario;
 import java.util.List;
 
 public class FuncionarioService {
-
+    
     private final FuncionarioDao funcionarioDao = new FuncionarioDao();
 
     public void salvar(Funcionario funcionario) {
